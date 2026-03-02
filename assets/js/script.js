@@ -70,11 +70,14 @@ $(document).ready(function() {
         const total = qty * harga;
 
         hiddenTotal.val(total);
-        displayTotal.text(new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            maximumFractionDigits: 0
-        }).format(total));
+        
+        if (displayTotal.length) {
+            displayTotal.text(new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }).format(total));
+        }
     }
 
     if (inputQty.length) {

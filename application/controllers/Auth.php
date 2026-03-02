@@ -23,7 +23,7 @@ class Auth extends CI_Controller {
       }
   }
 
-  private function _login()
+private function _login()
   {
       $user = $this->input->post('username', true);
       $pass = $this->input->post('password', true);
@@ -31,7 +31,7 @@ class Auth extends CI_Controller {
       $ambil_data = $this->db->get_where('user', ['username' =>$user])->row_array();
 
       if($ambil_data) {
-          if($pass == $ambil_data['password']) {
+          if(password_verify($pass, $ambil_data['password'])) { 
             if($ambil_data['id_role'] == 1) {
                 $data = [
                     'id' => $ambil_data['id'],

@@ -17,10 +17,9 @@ class Profil extends CI_Controller {
 
       public function index() 
       {
-              $this->form_validation->set_rules('foto', 'foto', 'trim');
               $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
               $this->form_validation->set_rules('username', 'username', 'trim|required');
-              $this->form_validation->set_rules('password', 'password', 'trim|required');
+              $this->form_validation->set_rules('password', 'password', 'trim');
 
               if($this->form_validation->run() == false ) {
                  $data['title'] = 'Profil Pengguna';
@@ -30,10 +29,15 @@ class Profil extends CI_Controller {
                  $this->load->view('templates/footer.php');
               } else {
                  $this->Model_profil->profil();
-                 $old_image = $data['barang']['foto'];
-                 unlink(FCPATH . 'assets/foto/' . $old_image);
+                 $this->session->set_flashdata('flash', 'Perubahan telah tersimpan');
                  redirect('profil');
               } 
       }
+
+      public function hapus_foto()
+      {
+          $this->Model_profil->hapus_foto();
+          $this->session->set_flashdata('flash', 'Foto profil telah dihapus');
+          redirect('profil');
+      }
 }
-?>
