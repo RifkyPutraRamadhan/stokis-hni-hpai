@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 02, 2026 at 09:59 AM
+-- Generation Time: Mar 02, 2026 at 10:48 AM
 -- Server version: 8.4.3
--- PHP Version: 7.4.33
+-- PHP Version: 8.3.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,17 +58,17 @@ INSERT INTO `barang` (`id`, `foto`, `kode`, `produk`, `id_kategori`, `dimensi_ku
 -- (See below for the actual view)
 --
 CREATE TABLE `joinbarang` (
-`berat_bersih` varchar(100)
-,`dimensi_kualitas` varchar(20)
+`id` int
 ,`foto` varchar(50)
-,`harga` int
-,`id` int
-,`id_kategori` int
-,`kategori` varchar(40)
-,`keterangan` text
 ,`kode` varchar(15)
 ,`produk` varchar(50)
+,`id_kategori` int
+,`kategori` varchar(40)
+,`dimensi_kualitas` varchar(20)
+,`berat_bersih` varchar(100)
 ,`stok` int
+,`harga` int
+,`keterangan` text
 ,`tanggal_proses` date
 );
 
@@ -79,22 +79,22 @@ CREATE TABLE `joinbarang` (
 -- (See below for the actual view)
 --
 CREATE TABLE `jointransaksi` (
-`alamat` text
-,`email` varchar(50)
+`id` int
 ,`foto` varchar(100)
-,`harga` int
-,`id` int
-,`id_kategori` int
 ,`id_member` varchar(8)
-,`kategori` varchar(40)
-,`keterangan` text
-,`kuantitas` int
-,`nama` varchar(30)
+,`email` varchar(50)
 ,`no_hp` varchar(13)
+,`nama` varchar(30)
+,`alamat` text
+,`id_kategori` int
+,`kategori` varchar(40)
 ,`produk` varchar(50)
+,`kuantitas` int
 ,`status` varchar(10)
-,`tanggal_transaksi` date
+,`harga` int
 ,`total` int
+,`keterangan` text
+,`tanggal_transaksi` date
 );
 
 -- --------------------------------------------------------
@@ -169,9 +169,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `foto`, `email`, `username`, `password`, `id_role`) VALUES
-(1, 'default2.jpg', 'admin@gmail.com', 'admin', 'admin', 1),
+(1, 'default.jpg', 'admin@gmail.com', 'admin', '$2y$10$1leZXltehVcZih98LpQFKe0q6/MKgfJmfOMEqypVvVninwYYN1sd2', 1),
 (2, 'default.jpg', 'yuda@gmail.com', 'yuda', '$2y$10$UtUwDHwpPwfljrGIVH1M/.EEJsObLd3boJUouNWg9EOXda2dUUSdm', 2),
-(3, 'default.jpg', 'rifkyputraramadhan@gmail.com', 'rifky', '$2y$10$qpVlibV2vmd8Y8wtXXby1.h0yAR3XlD3GWfXjno07Vh/O8XzR0Jxy', 2);
+(3, 'default.jpg', 'rifkyputraramadhan@gmail.com', 'rifky', '$2y$10$m.Yei9ngobw6Mu/v0Z0dj.R/i7hAX3KsPmmrlse.GgF6iJVlW17BK', 2);
 
 --
 -- Indexes for dumped tables
